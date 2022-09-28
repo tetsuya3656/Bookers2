@@ -1,2 +1,61 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h2>User info</h2>
+<% if @user.profile_image.attached? %>
+ <%= image_tag @user.get_profile_image(100,100) %>
+<% else %>
+ <%= image_tag 'no_image', size: "100×100" %>
+<% end %>
+ <table>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>inrtoduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+
+<% if @user == current_user %>
+ <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
+
+ <h2>New book</h2>
+ <%= form_with model: @book do |f| %>
+ <label for="inputTitle">Title</label><br/>
+ <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %><br/>
+ <label for="inputOpinion">Opinion</label><br/>
+ <%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"感想" %><br/>
+ <%= f.submit "Create Book" %>
+ <% end %>
+
+<h2>Books</h2>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @books.each do |book| %>
+   <tr>
+      <td>
+      <% if @user.profile_image.attached? %>
+       <%= image_tag @user.get_profile_image(100,100) %>
+      <% else %>
+       <%= image_tag 'no_image', size: "100×100" %>
+      <% end %>
+      </td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+
+   </tr>
+  </tbody>
+<% end %>
+
+</table>
