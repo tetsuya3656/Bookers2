@@ -22,10 +22,10 @@
           </button>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
-          
+
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "/",class:"nav-link text-light" do %>
+              <%= link_to user_path(current_user),class:"nav-link text-light" do %>
               <i class="fas fa-home"></i>
               <%= "Home" %>
               <% end %>
@@ -82,6 +82,7 @@
   <main class= "mb-auto">
     <%= yield %>
   </main>
+  
   <footer>
     <div class= "container mt-5">
       <div class= "row">
@@ -94,6 +95,3 @@
 
   </body>
 </html>
-%body
-  - flash.each do |message_type, message|
-    = content_tag :div, message, class: message_type

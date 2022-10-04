@@ -1,4 +1,11 @@
 <h2>Editing Book</h2>
+<% if flash[:notice] %>
+ <div class= "alert alert-success" role="alert">
+   <p class= "notice text-center" style="color:green;">
+    <%= flash[:notice] %>
+   </p>
+ </div>
+<% end %>
 <%= form_with model: @book do |f| %>
  <label for="inputTitle">Title</label><br/>
  <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %><br/>

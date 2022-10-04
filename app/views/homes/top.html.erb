@@ -1,12 +1,18 @@
-
+<% if flash[:notice] %>
+  <div class= "alert alert-success" role="alert">
+    <p class= "notice text-center" style="color:green;">
+      <%= flash[:notice] %>
+    </p>
+  </div>
+<% end %>
 <div class= "container">
   <div class= "row">
     <div class= "mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-      <h1>welcome to 
+      <h1>welcome to
         <i class="fas fa-book"></i>
           <strong>Bookers</strong>!!
       </h1>
-        <p>in 
+        <p>in
           <i class="fas fa-book"></i>
             <strong>Bookers</strong>,
         </p>
@@ -18,15 +24,11 @@
 
 <div class="btn-wrapper col-10 mx-auto">
   <div class="row">
-    <li>
       <%= link_to new_user_session_path,class:"btn btn-info btn-sm btn-block mb-3 sign_in" do %>
         <%= "Log in" %>
       <% end %>
-    </li>
-    <li>
       <%= link_to new_user_registration_path,class:"btn btn-success btn-sm btn-block sign_up" do %>
         <%= "Sign up" %>
       <% end %>
-    </li>
-  </div>  
-</div>  
+  </div>
+</div>
