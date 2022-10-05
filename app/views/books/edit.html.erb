@@ -1,3 +1,12 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -10,10 +19,10 @@
         </div>
       <% end %>
       <%= form_with model: @book do |f| %>
-        <label for="inputTitle">Title</label><br/>
-          <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"タイトル" %><br/>
-        <label for="inputOpinion">Opinion</label><br/>
-          <%= f.text_area :opinion, autofocus: true, id:"inputOpinion", placeholder:"感想" %><br/>
+        <label >Title</label><br/>
+          <%= f.text_field :title %><br/>
+        <label>Opinion</label><br/>
+          <%= f.text_area :body %><br/>
           <%= f.submit "Update Book" %>
           <p>
             <%= link_to "Show", book_path(@book.id) %>
